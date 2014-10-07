@@ -1,0 +1,117 @@
+<html>
+<head>
+<style>
+img{
+	width:22%;
+}
+.include_image_show{
+	border:2px solid;
+	width:84%;
+	margin-left: 9%;
+	margin-top: 5%;
+	background-color: red;
+}
+</style>
+<script>
+var k=0;
+var l=0;
+var arr=new Array(7);
+arr[1]="image1.png";
+arr[2]="image2.png";
+arr[3]="image2.png";
+arr[4]="image3.jpg";
+arr[5]="image1.png";
+arr[6]="image3.jpg";
+var flag,prev;
+function inspection(flag){
+	k++;
+	
+	if(k==1){
+var newid="image"+flag;
+var course=document.getElementById(newid);
+	course.src=arr[flag];
+	prev=flag;
+	}
+	else if(k==2){
+		k=0;
+var newid="image"+flag;
+var course=document.getElementById(newid);
+	course.src=arr[flag];
+
+		var counter=check(prev,flag);
+		console.log(counter);
+		if(counter==0){
+        document.getElementById("image1").src="image4.jpg";
+		document.getElementById("image2").src="image4.jpg";
+		document.getElementById("image3").src="image4.jpg";
+		document.getElementById("image4").src="image4.jpg";
+        document.getElementById("image5").src="image4.jpg";
+        document.getElementById("image6").src="image4.jpg";
+		l=0;
+		}
+		else{
+          var prev1="image"+prev;
+          var next="image"+flag;
+          console.log(prev1);
+          console.log(next);
+          document.getElementById(prev1).src=arr[prev];
+          document.getElementById(next).src=arr[flag];
+          l++;
+          if(l==3)
+          	alert("dude you were able to win this game?wanna play again");
+          return;
+		}
+		k=0;
+	}
+
+}
+function check(prev,flag){
+	console.log(arr[prev]);
+	console.log(arr[flag]);
+if(arr[prev]==arr[flag])
+	return 1;
+else
+	return 0;
+}
+function startTime(){
+	var today=new Date();
+	var h=today.getHours();
+	var min=today.getMinutes();
+	var sec=today.getSeconds();
+	m=checkTime(min);
+	s=checkTime(sec);
+	document.getElementById("time").innerHTML=h+":"+m+":"+s;
+	var t=setTimeout(function(){startTime()},500);
+}
+function checkTime(i){
+	if(i<10){i="0"+i;}
+	return i;
+}
+function restartgame(){
+	document.getElementById("image1").src="image4.jpg";
+    document.getElementById("image2").src="image4.jpg";
+    document.getElementById("image3").src="image4.jpg";
+    document.getElementById("image4").src="image4.jpg";
+    document.getElementById("image5").src="image4.jpg";
+    document.getElementById("image6").src="image4.jpg";
+}
+</script>
+</head>
+<body onload="startTime()">
+<div id="time" style="float:left; margin-top:-5%;">
+</div>
+<div class="include_image_show">
+<div class="image_show" style="margin-top:6%;margin-left:18%;">
+<img src="image4.jpg" data-id="1" id="image1" onclick="inspection(1)"/>
+<img src="image4.jpg" data-id="2" id="image2" onclick="inspection(2)"/>
+<img src="image4.jpg" data-id="3" id="image3" onclick="inspection(3)"/>
+</div>
+<div class="image_show" style="margin-left:18%;">
+<img src="image4.jpg" data-id="4" id="image4" onclick="inspection(4)"/>
+<img src="image4.jpg" data-id="5" id="image5" onclick="inspection(5)"/>
+<img src="image4.jpg" data-id="6" id="image6" onclick="inspection(6)"/>
+</div>
+</div>
+<button onclick="restartgame()" style="margin-left:40%;margin-top:2%;">press enter to restart game</button>
+</body>
+</html>
