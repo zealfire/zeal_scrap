@@ -1,0 +1,68 @@
+<html>
+<head>
+<style>
+.shift{
+	margin-left:49%;
+font-size: 56px;
+margin-top: 3%;
+}
+
+</style>
+<script type="text/javascript">
+	var k=0,prev;
+	function help(str){
+		console.log(str);
+	k++;
+	document.getElementById("insert").value=k;
+	//if(k==1)
+		var pop=document.getElementById(str);
+		//prev=str;
+	//if(k==2){
+    for(var i=0;i<9;i++)
+    {
+if(document.getElementById(i).innerText==0){
+	var temp=pop.innerText;
+	document.getElementById(i).innerText=temp;
+	pop.innerText=0;
+}
+
+	
+}
+		
+ 
+//		k=0;
+	}
+	//}
+function new1(){
+	for(var i=0;i<9;i++)
+document.getElementById(i).innerText=i;
+document.getElementById("insert").value=0;
+}
+</script>
+</head>
+<body>
+<h1 style="margin-left:45%;">Magic Square</h1>
+<div class="shift">
+<button id="5" style="float:left;" onclick="help(5)">5    </button>
+<button id="8" style="float:left;" onclick="help(8)">8 </button>
+<button id="1" style="float:left;" onclick="help(1)">1 </button>
+</div>
+<br/><br/>
+<div class="shift" style="margin-top:0%;">
+<button id="0" style="float:left;" onclick="help(0)">0 </button>
+<button id="6" style="float:left;" onclick="help(6)">6 </button>
+<button id="3" style="float:left;" onclick="help(3)">3 </button>
+</div>
+<br/><br/>
+<div class="shift" style="margin-top:0%;">
+<button id="2" style="float:left;" onclick="help(2)">2 </button>
+<button id="4" style="float:left;" onclick="help(4)">4 </button>
+<button id="7" style="float:left;" onclick="help(7)">7 </button>
+</div>
+
+<div>
+<br/><br/><br/><br/><strong style="margin-left:48%;"># of moves</strong><br/><input type="text" id="insert" value="0" style="margin-left:48%;"></input>&nbsp
+<button onclick="new1()" style="margin-left:48%;"> New Game</button>
+</div>
+</body>
+</html>
