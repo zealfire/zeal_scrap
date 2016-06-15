@@ -24,17 +24,6 @@ conn = sqlite3.connect(path)
 c = conn.cursor()
 
 while True:
-    # c.execute('select * from "Current Tabs";')
-    # names = list(map(lambda x: x[0], c.description))
-    # print (names)
     c.execute("SELECT name FROM sqlite_master WHERE type='table';")
     print(c.fetchall())
-    # url = c.fetchone()[1]
-
-    # try:
-    #     urllib2.urlopen(url).read()
-    # except urllib2.URLError:
-    #     pass
-    # else:
-    #     wb.open(url)
     break
